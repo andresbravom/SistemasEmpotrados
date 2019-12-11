@@ -35,7 +35,6 @@ void Init_Blue_LED_PWM(uint16_t period){
 SIM->SCGC5|= SIM_SCGC5_PORTD_MASK;
 SIM->SCGC6|= SIM_SCGC6_TPM0_MASK;
 
-
 PORTD->PCR[led_azul]&= ~PORT_PCR_MUX_MASK;
 PORTD->PCR[led_azul]|= PORT_PCR_MUX(4);
 
@@ -91,13 +90,8 @@ int main (void) {
 	Init_Blue_LED_PWM(PWM_PERIOD);
 	Init_Green_LED_PWM(PWM_PERIOD);
 	
-	//TPM0->CONTROLS[1].CnV = 1;
-	//flash forever
 	while(1) {
-//		int x=10;
-//		int y=30;
-//		int z=50;
-		//Brihten LED
+
 		for (i=0; i<PWM_PERIOD; i++) {
 			TPM2->CONTROLS[0].CnV = i;
 			TPM0->CONTROLS[1].CnV = 0;
