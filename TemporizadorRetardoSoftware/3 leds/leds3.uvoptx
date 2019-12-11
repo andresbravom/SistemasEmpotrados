@@ -187,8 +187,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\TemporizadorSoftware.c</PathWithFileName>
-      <FilenameWithoutPath>TemporizadorSoftware.c</FilenameWithoutPath>
+      <PathWithFileName>.\leds3.c</PathWithFileName>
+      <FilenameWithoutPath>leds3.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
