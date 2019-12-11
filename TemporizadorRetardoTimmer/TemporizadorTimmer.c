@@ -1,75 +1,6 @@
-/*#include <mkl25z4.h>
-#include <core_cm0plus.h>
-#define MASK(x) (1UL << (x))
-
-void SysTick_Handler() {
-	PTD->PTOR |= MASK(1);
-}
-
-int main(void) {
-	//Se configura el led azul
-	
-	SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK;
-	
-	//Habilitamos las interrupciones
-	
-	PORTD->PCR[1] = ~ PORT_PCR_MUX_MASK;
-	PORTD->PCR[1] = PORT_PCR_MUX(1);
-	PTD->PDOR |= MASK(1);
-	PTD->PDDR |= MASK(1);
-	
-	//Configuramos el SystickTimer
-	SysTick->LOAD = (48000000/16);
-	NVIC_SetPriority(SysTick_IRQn, 3);
-	NVIC_EnableIRQ(SysTick_IRQn);
-	
-	SysTick->VAL = 0;
-	SysTick->CTRL = SysTick_CTRL_TICKINT_Msk;
-	SysTick->CTRL = SysTick_CTRL_ENABLE_Msk;
-	
-	while(1) {
-		;
-	}
-}
-
-
-
-
-
-
-#include <MKL25z4.h>
-#define Mask(x) (1UL<<(x))
-#define led_azul (1) //Port D
-
-void SysTick_Handler() {
-	PTD->PCOR |= Mask(led_azul);
-}
-
-int main(void){
-	//Enciende el led
-	SIM->SCGC5 |= SIM_SCGC5_PORTD_MASK; 
-	SIM->SCGC5 |= SIM_SCGC5_PORTB_MASK;
-	PORTD->PCR[led_azul] &= ~ PORT_PCR_MUX_MASK; 
-	PORTD->PCR[led_azul] |= PORT_PCR_MUX(1);
-	PTD->PDDR |= Mask(led_azul);
-	
-	//Configuramos el SystickTimer
-	SysTick->LOAD = (48000000/16);
-	NVIC_SetPriority(SysTick_IRQn, 3);
-	NVIC_EnableIRQ(SysTick_IRQn);
-	
-	SysTick->VAL = 0;
-	SysTick->CTRL = SysTick_CTRL_TICKINT_Msk;
-	SysTick->CTRL = SysTick_CTRL_ENABLE_Msk;
-	
-	while(1) {
-		;
-	}
-}*/
-
-
 #include "MKL25Z4.h"
 #define mask(x) (1UL << (x))
+#define led_azul (1)
 
 //Delay function (Software)
 
@@ -113,14 +44,14 @@ int main(void){
 
 	//Setting the MUX to the GPIO
 		//Port for Blue led
-		PORTD -> PCR[1] &= ~PORT_PCR_MUX_MASK; 	//MUX Clear
-		PORTD -> PCR[1] |= PORT_PCR_MUX(1); 		//MUX Set
+		PORTD -> PCR[led_azul] &= ~PORT_PCR_MUX_MASK; 	//MUX Clear
+		PORTD -> PCR[led_azul] |= PORT_PCR_MUX(led_azul); 		//MUX Set
 
 	//Set the value of the ports to 0
-		PTD->PSOR = mask(1);
+		PTD->PSOR = mask(led_azul);
 
 	//Configure pin as input/output ("|=" equals to output and "&= ~" equals to input)
-		PTD->PDDR |= mask(1);		//Blue led port output
+		PTD->PDDR |= mask(led_azul);		//Blue led port output
 
 	//Initialize the clock timer
 		Init_SysTick();
