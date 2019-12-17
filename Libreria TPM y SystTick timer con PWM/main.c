@@ -6,7 +6,6 @@
 #define PWM_PERIOD (48000)
 
 void SysTick_Handler(){
-	
 }
 
 int main (void) {
@@ -18,23 +17,40 @@ int main (void) {
 	init_sysTick();
 	__enable_irq();
 	
-
-	//TPM0->CONTROLS[1].CnV = 1;
-	//flash forever
 	while(1) {
-		
-		//Brihten LED
+
+		//Brihten LED RED
 		for (i=0; i<PWM_PERIOD; i++) {
 			TPM2->CONTROLS[0].CnV = i;
+			for (delay=0; delay<100; delay++)
+									;
+		}
+		//Dim LED RED
+		for (i=PWM_PERIOD-1; i>0; i--) {
+			TPM2->CONTROLS[0].CnV = i;
+			for(delay=0; delay<100; delay++)
+									;
+		}
+			//Brihten LED BLUE
+		for (i=0; i<PWM_PERIOD; i++) {
 			TPM0->CONTROLS[1].CnV = i;
+			for (delay=0; delay<100; delay++)
+									;
+		}
+		//Dim LED BLUE
+		for (i=PWM_PERIOD-1; i>0; i--) {
+			TPM0->CONTROLS[1].CnV = i;
+			for(delay=0; delay<100; delay++)
+									;
+		}
+			//Brihten LED GREEN
+		for (i=0; i<PWM_PERIOD; i++) {
 			TPM2->CONTROLS[1].CnV = i;
 			for (delay=0; delay<100; delay++)
 									;
 		}
-		//Dim LED
+		//Dim LED GREEN
 		for (i=PWM_PERIOD-1; i>0; i--) {
-			TPM2->CONTROLS[0].CnV = i;
-			TPM0->CONTROLS[1].CnV = i;
 			TPM2->CONTROLS[1].CnV = i;
 			for(delay=0; delay<100; delay++)
 									;
