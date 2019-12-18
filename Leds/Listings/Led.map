@@ -407,9 +407,9 @@ Image Symbol Table
     __use_no_semihosting_swi                 0x000001f1   Thumb Code     2  use_no_semi.o(.text)
     __semihosting_library_function           0x000001f3   Thumb Code     0  indicate_semi.o(.text)
     SystemInit                               0x000001f5   Thumb Code     8  system_mkl25z4.o(i.SystemInit)
-    main                                     0x00000201   Thumb Code   172  led.o(i.main)
-    Region$$Table$$Base                      0x000002bc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000002cc   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x00000201   Thumb Code   208  led.o(i.main)
+    Region$$Table$$Base                      0x000002e0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000002f0   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x1ffff000   Data          96  libspace.o(.bss)
     __temporary_stack_top$libspace           0x1ffff060   Data           0  libspace.o(.bss)
 
@@ -483,9 +483,9 @@ Memory Map of the image
     0x000001f2   0x000001f2   0x00000000   Code   RO          221    .text               c_p.l(indicate_semi.o)
     0x000001f2   0x000001f2   0x00000002   PAD
     0x000001f4   0x000001f4   0x0000000c   Code   RO           59    i.SystemInit        system_mkl25z4.o
-    0x00000200   0x00000200   0x000000bc   Code   RO            3    i.main              led.o
-    0x000002bc   0x000002bc   0x00000010   Data   RO          271    Region$$Table       anon$$obj.o
-    0x000002cc   0x000002cc   0x00000134   PAD
+    0x00000200   0x00000200   0x000000e0   Code   RO            3    i.main              led.o
+    0x000002e0   0x000002e0   0x00000010   Data   RO          271    Region$$Table       anon$$obj.o
+    0x000002f0   0x000002f0   0x00000110   PAD
     0x00000400   0x00000400   0x00000010   Code   RO           49    .ARM.__at_0x400     startup_mkl25z4.o
 
 
@@ -510,14 +510,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       188         16          0          0          0       1955   led.o
+       224         16          0          0          0       1979   led.o
         80         44        192          0        256        972   startup_mkl25z4.o
         12          4          0          0          0        489   system_mkl25z4.o
 
     ----------------------------------------------------------------------
-       280         64        516          0        256       3416   Object Totals
+       316         64        480          0        256       3440   Object Totals
          0          0         16          0          0          0   (incl. Generated)
-         0          0        308          0          0          0   (incl. Padding)
+         0          0        272          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -563,9 +563,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-       524         80        516          0        352       3760   Grand Totals
-       524         80        516          0        352       3760   ELF Image Totals
-       524         80        516          0          0          0   ROM Totals
+       560         80        480          0        352       3784   Grand Totals
+       560         80        480          0        352       3784   ELF Image Totals
+       560         80        480          0          0          0   ROM Totals
 
 ==============================================================================
 

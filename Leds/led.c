@@ -24,6 +24,9 @@ int main(){
 	PORTB->PCR[led_verde] |= PORT_PCR_MUX(1);
 	
 	//Paso 3: Configurar los pines como I/O
+	PTD->PSOR = Mask(led_azul); //Pone a '1' el pin del puerto D (Enciende el led)
+	PTB->PSOR = Mask(led_rojo);
+	PTB->PSOR = Mask(led_verde);
 	
 	PTD->PDDR |= Mask(led_azul);
 	PTB->PDDR |= Mask(led_rojo);
@@ -34,4 +37,8 @@ int main(){
 	PTD->PCOR = Mask(led_azul); //Pone a '1' el pin del puerto D (Enciende el led)
 	PTB->PCOR = Mask(led_rojo);
 	PTB->PCOR = Mask(led_verde);
+	
+	PTD->PSOR = Mask(led_azul); //Pone a '1' el pin del puerto D (Enciende el led)
+	PTB->PSOR = Mask(led_rojo);
+	PTB->PSOR = Mask(led_verde);
 }
